@@ -20,7 +20,13 @@ struct PlayingGame: View {
     @State private var highScore = 0
     @State private var winGame = false
     @State private var rolling = false
-    @State var playersNumber = 0
+    let playersNumber : Int
+    @State var pNumber = 1
+    @State private var showingWin = false
+    @ObservedObject private var diceSound = AudioPlayer(name: "DiceRoll", type: "wav")
+    @ObservedObject private var NextPlayer = AudioPlayer(name: "NextPlayer", type: "wav")
+    @ObservedObject private var WinGame = AudioPlayer(name: "RobotSound", type: "mp3")
+
     var body: some View {
         VStack {
             Spacer()
@@ -36,6 +42,8 @@ struct PlayingGame: View {
                     .padding()
                     .onTapGesture {
                         chooseRandom(times: 3)
+                        diceSound.start()
+                        
                         withAnimation(.interpolatingSpring(stiffness: 10, damping: 2)) {
                             rotation += 360
                         }
@@ -45,7 +53,7 @@ struct PlayingGame: View {
                 Spacer()
                 VStack
                 {
-                    Text("Player \(playersNumber)'s High Score")
+                    Text("Player \(pNumber)'s High Score")
                         .underline()
                     Text("\(highScore)")
                         .padding()
@@ -62,6 +70,7 @@ struct PlayingGame: View {
                     .rotation3DEffect(.degrees(rotation), axis: (x: 1, y: 1, z: 0))
                     .padding()
                     .onTapGesture {
+                        diceSound.start()
                         chooseRandom(times: 3)
                         withAnimation(.interpolatingSpring(stiffness: 10, damping: 2)) {
                             rotation += 360
@@ -88,8 +97,9 @@ struct PlayingGame: View {
                                     }
                                     if score == 10
                                     {
-                                        //NavigationLink("You Win", destination: YouWin())
-                                        //NavigationView<<#Content: View#>>(content: YouWin())
+                                        Text("Congratulations player \(pNumber) you win")
+                                            .font(.title)
+                                        
                                     }
                                 }
                             }
@@ -108,7 +118,8 @@ struct PlayingGame: View {
                             }
                             if score == 10
                             {
-                                //NavigationLink("", destination: YouWin())
+                                showingWin = true
+                                WinGame.start()
                             }
                         }
                     }
@@ -116,15 +127,33 @@ struct PlayingGame: View {
                     //.disabled(rolling == true)
                 }
             }
-            Button("Player Switch")
-            {
-                score = 0
-                points = Array(repeating: true, count: points.count)
-                diceTotal = 0
-                playersNumber += 1
-                //currentPlayer %= players.count
+            if (playersNumber == 1) {
+                Button("Restart")
+                {
+                    score = 0
+                    points = Array(repeating: true, count: points.count)
+                    diceTotal = 0
+                    NextPlayer.start()
+                }
+                .padding()
             }
-            .padding()
+            if (playersNumber > 1)
+            {
+                Button("Player Switch")
+                {
+                    score = 0
+                    points = Array(repeating: true, count: points.count)
+                    diceTotal = 0
+                    pNumber += 1
+                    if (pNumber > playersNumber) {
+                        pNumber = 1
+                    }
+                }
+                .padding()
+            }
+        }
+        .fullScreenCover(isPresented: $showingWin) {
+            YouWin(pNumber: pNumber)
         }
     }
     
@@ -144,6 +173,6 @@ struct PlayingGame: View {
 
 struct PlayingGame_Previews: PreviewProvider {
     static var previews: some View {
-        PlayingGame()
+        PlayingGame(playersNumber: 1)
     }
 }

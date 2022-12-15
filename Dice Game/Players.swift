@@ -27,13 +27,18 @@ struct Players: View {
                     }
                 }
                 .disabled(playerSelect == false)
-                Text("\(playersNumber)")
             }
+            if (playersNumber > 1) {
                 Text("You have \(playersNumber) players")
                 .padding()
+        }
+            if (playersNumber == 1) {
+                Text("You have \(playersNumber) player")
+                .padding()
+            }
             if playerSelect == false
             {
-                NavigationLink("Play Game", destination: PlayingGame())
+                NavigationLink("Play Game", destination: PlayingGame(playersNumber: playersNumber))
                     .padding()
             }
         }

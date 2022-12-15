@@ -14,6 +14,10 @@
 		972C283929195E5C000CE02D /* Dice_GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972C283829195E5C000CE02D /* Dice_GameTests.swift */; };
 		972C284329195E5C000CE02D /* Dice_GameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972C284229195E5C000CE02D /* Dice_GameUITests.swift */; };
 		972C284529195E5C000CE02D /* Dice_GameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972C284429195E5C000CE02D /* Dice_GameUITestsLaunchTests.swift */; };
+		975D74DA294B73DD0011E287 /* RobotSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 975D74D9294B73DD0011E287 /* RobotSound.mp3 */; };
+		975D74DC294B758D0011E287 /* DiceRoll.wav in Resources */ = {isa = PBXBuildFile; fileRef = 975D74DB294B758D0011E287 /* DiceRoll.wav */; };
+		975D74DE294B76C50011E287 /* NextPlayer.wav in Resources */ = {isa = PBXBuildFile; fileRef = 975D74DD294B76C50011E287 /* NextPlayer.wav */; };
+		975D74E0294B78610011E287 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975D74DF294B78610011E287 /* AudioPlayer.swift */; };
 		976AC0EB292D2553000D9A21 /* YouWin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976AC0EA292D2553000D9A21 /* YouWin.swift */; };
 		976AC0EF293A569E000D9A21 /* PlayingGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976AC0EE293A569E000D9A21 /* PlayingGame.swift */; };
 		976AC0F1293F9817000D9A21 /* Instructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976AC0F0293F9817000D9A21 /* Instructions.swift */; };
@@ -48,6 +52,10 @@
 		972C283E29195E5C000CE02D /* Dice GameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dice GameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		972C284229195E5C000CE02D /* Dice_GameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dice_GameUITests.swift; sourceTree = "<group>"; };
 		972C284429195E5C000CE02D /* Dice_GameUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dice_GameUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		975D74D9294B73DD0011E287 /* RobotSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = RobotSound.mp3; path = ../../RobotSound.mp3; sourceTree = "<group>"; };
+		975D74DB294B758D0011E287 /* DiceRoll.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = DiceRoll.wav; sourceTree = "<group>"; };
+		975D74DD294B76C50011E287 /* NextPlayer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = NextPlayer.wav; sourceTree = "<group>"; };
+		975D74DF294B78610011E287 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		976AC0EA292D2553000D9A21 /* YouWin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouWin.swift; sourceTree = "<group>"; };
 		976AC0EE293A569E000D9A21 /* PlayingGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingGame.swift; sourceTree = "<group>"; };
 		976AC0F0293F9817000D9A21 /* Instructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instructions.swift; sourceTree = "<group>"; };
@@ -105,9 +113,13 @@
 				972C282729195E5B000CE02D /* Dice_GameApp.swift */,
 				972C282929195E5B000CE02D /* ContentView.swift */,
 				976AC0F0293F9817000D9A21 /* Instructions.swift */,
+				975D74DF294B78610011E287 /* AudioPlayer.swift */,
 				976AC0EE293A569E000D9A21 /* PlayingGame.swift */,
 				976AC0EA292D2553000D9A21 /* YouWin.swift */,
 				976AC0F2293FA057000D9A21 /* Players.swift */,
+				975D74D9294B73DD0011E287 /* RobotSound.mp3 */,
+				975D74DB294B758D0011E287 /* DiceRoll.wav */,
+				975D74DD294B76C50011E287 /* NextPlayer.wav */,
 				972C282B29195E5C000CE02D /* Assets.xcassets */,
 				972C282D29195E5C000CE02D /* Preview Content */,
 			);
@@ -243,7 +255,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				975D74DC294B758D0011E287 /* DiceRoll.wav in Resources */,
 				972C282F29195E5C000CE02D /* Preview Assets.xcassets in Resources */,
+				975D74DE294B76C50011E287 /* NextPlayer.wav in Resources */,
+				975D74DA294B73DD0011E287 /* RobotSound.mp3 in Resources */,
 				972C282C29195E5C000CE02D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,6 +290,7 @@
 				972C282829195E5B000CE02D /* Dice_GameApp.swift in Sources */,
 				976AC0EF293A569E000D9A21 /* PlayingGame.swift in Sources */,
 				976AC0EB292D2553000D9A21 /* YouWin.swift in Sources */,
+				975D74E0294B78610011E287 /* AudioPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

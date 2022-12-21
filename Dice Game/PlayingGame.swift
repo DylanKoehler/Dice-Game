@@ -25,7 +25,7 @@ struct PlayingGame: View {
     @State private var showingWin = false
     @ObservedObject private var diceSound = AudioPlayer(name: "DiceRoll", type: "wav")
     @ObservedObject private var NextPlayer = AudioPlayer(name: "NextPlayer", type: "wav")
-    @ObservedObject private var WinGame = AudioPlayer(name: "RobotSound", type: "mp3")
+    @ObservedObject private var WinGame = AudioPlayer(name: "RobotSound", type: "wav")
 
     var body: some View {
         VStack {
@@ -94,12 +94,6 @@ struct PlayingGame: View {
                                     if score > highScore
                                     {
                                         highScore = score
-                                    }
-                                    if score == 10
-                                    {
-                                        Text("Congratulations player \(pNumber) you win")
-                                            .font(.title)
-                                        
                                     }
                                 }
                             }

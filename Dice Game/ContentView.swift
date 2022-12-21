@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  Roll the Dice
 //
-//Final Submit
+//
 //  Created by Dylan Koehler on 11/07/22
 //
 
